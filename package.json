@@ -1,7 +1,7 @@
 {
   "name": "@mediaxpost/express-rate-limiter",
-  "version": "0.0.1",
-  "description": "A Promise-based, object-key, cache extension for Redis and MemoryCache.",
+  "version": "1.0.0",
+  "description": "A cache-based, request rate limiter for ExpressJS",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha",
@@ -16,11 +16,15 @@
     "url": "git+https://github.com/MediaXPost/object-key-cache.git"
   },
   "keywords": [
-    "object",
-    "cache",
-    "redis",
-    "memory",
-    "nodejs"
+    "express",
+    "expressJS",
+    "rate limit",
+    "rate limiter",
+    "rate",
+    "limit",
+    "ip rate limit",
+    "ratelimit",
+    "ip"
   ],
   "author": "Jay Reardon",
   "license": "MIT",
