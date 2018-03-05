@@ -5,6 +5,8 @@
 ![Version](http://img.shields.io/npm/v/@mediaxpost/express-ip-ratelimiter.svg)
 ![Downloads](http://img.shields.io/npm/dt/@mediaxpost/express-ip-ratelimiter.svg)
 [![Build Status](https://travis-ci.org/MediaXPost/express-ip-ratelimiter.svg)](https://travis-ci.org/MediaXPost/express-ip-ratelimiter)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/chronosis/express-rate-limiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MediaXPost/express-rate-limiter&amp;utm_campaign=Badge_Grade)
+[![Codacy Coverage  Badge](https://api.codacy.com/project/badge/Coverage/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/chronosis/express-rate-limiter?utm_source=github.com&utm_medium=referral&utm_content=MediaXPost/express-rate-limiter&utm_campaign=Badge_Coverage)
 [![Dependencies](https://david-dm.org/MediaXPost/express-ip-ratelimiter/status.svg)](https://david-dm.org/MediaXPost/express-ip-ratelimiter)
 
 `express-rate-limit` is a cache-based, request reate limiter for use with [`expressJS`](https://www.npmjs.com/package/express). It is designed for use with [`request-utils`](https://www.npmjs.com/package/@mediaxpost/request-utils) but can be used without. It caches a store of IP address, Method, and Request tuples used to make any request and then temporarily blocks requests from those sources once a limit for those requests have been exceeded.
