@@ -6,14 +6,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const RateLimiter = require('..');
 
-const req = {
-  headers: {},
-  connection: {
-    remoteAddress: '127.0.0.1'
-  },
-  path: '/',
-  method: 'POST'
-};
+const req = { headers: {}, connection: { remoteAddress: '127.0.0.1' }, path: '/', method: 'POST' };
 
 const res = {
   _status: 0,
@@ -89,11 +82,11 @@ describe('RateLimiter', () => {
   });
 
   it('limit (no limit reached)', (done) => {
-     rateLimiter.limit(req, res, () => {
-       const val = JSON.parse(rateLimiter.cache.cache.cache.test.value['ratelimit:/:post:127.0.0.1']);
-       expect(val.remaining).to.be.equal(0);
-       done();
-     });
+    rateLimiter.limit(req, res, () => {
+      const val = JSON.parse(rateLimiter.cache.cache.cache.test.value['ratelimit:/:post:127.0.0.1']);
+      expect(val.remaining).to.be.equal(0);
+      done();
+    });
   });
 
   it('limit after ratelimit reached', (done) => {
@@ -102,17 +95,15 @@ describe('RateLimiter', () => {
       expect(val.remaining).to.be.equal(-1);
       done();
     });
-    rateLimiter.limit(req, res, () => { });
+    rateLimiter.limit(req, res, () => {});
   });
 
   it('limit after expire', (done) => {
     clock.tick(10000);
-     rateLimiter.limit(req, res, () => {
-       const val = JSON.parse(rateLimiter.cache.cache.cache.test.value['ratelimit:/:post:127.0.0.1']);
-       expect(val.remaining).to.be.equal(0);
-       done();
-     });
+    rateLimiter.limit(req, res, () => {
+      const val = JSON.parse(rateLimiter.cache.cache.cache.test.value['ratelimit:/:post:127.0.0.1']);
+      expect(val.remaining).to.be.equal(0);
+      done();
+    });
   });
-
-
 });
