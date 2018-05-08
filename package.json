@@ -1,6 +1,6 @@
 {
   "name": "@mediaxpost/express-rate-limiter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A cache-based, request rate limiter for ExpressJS",
   "main": "index.js",
   "scripts": {
@@ -41,14 +41,14 @@
     "gulp-eslint": "^4.0.2",
     "gulp-mocha": "^5.0.0",
     "gulp-prettier": "^1.1.0",
-    "lolex": "^2.3.2",
+    "lolex": "^2.4.1",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1",
     "prettier": "^1.12.1"
   },
   "dependencies": {
     "@mediaxpost/lodashext": "^1.1.0",
-    "@mediaxpost/memory-cache": "^1.1.1-1",
+    "@mediaxpost/memory-cache": "^1.1.4",
     "@mediaxpost/object-key-cache": "^1.3.2",
     "@mediaxpost/request-utils": "^1.0.1",
     "bluebird": "^3.5.1",
