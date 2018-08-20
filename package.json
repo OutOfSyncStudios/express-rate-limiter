@@ -1,6 +1,6 @@
 {
   "name": "@mediaxpost/express-rate-limiter",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A cache-based, request rate limiter for ExpressJS",
   "main": "index.js",
   "scripts": {
