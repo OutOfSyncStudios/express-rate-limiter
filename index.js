@@ -1,9 +1,9 @@
 // index.js
 
 // Dependencies
-const __ = require('@mediaxpost/lodashext');
-const ObjectKeyCache = require('@mediaxpost/object-key-cache');
-const ReqUtils = require('@mediaxpost/request-utils');
+const __ = require('@outofsync/lodash-ex');
+const ObjectKeyCache = require('@outofsync/object-key-cache');
+const ReqUtils = require('@outofsync/request-utils');
 const LogStub = require('logstub');
 
 class RateLimiter {

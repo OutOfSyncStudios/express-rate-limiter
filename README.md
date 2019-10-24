@@ -1,15 +1,15 @@
 # express-rate-limiter
 
-[![NPM](https://nodei.co/npm/@mediaxpost/express-rate-limiter.png?downloads=true)](https://nodei.co/npm/@mediaxpost/express-rate-limiter/)
+[![NPM](https://nodei.co/npm/@outofsync/express-rate-limiter.png?downloads=true)](https://nodei.co/npm/@outofsync/express-rate-limiter/)
 
-![Version](http://img.shields.io/npm/v/@mediaxpost/express-rate-limiter.svg)
-![Downloads](http://img.shields.io/npm/dt/@mediaxpost/express-rate-limiter.svg)
-[![Build Status](https://travis-ci.org/MediaXPost/express-rate-limiter.svg)](https://travis-ci.org/MediaXPost/express-rate-limiter)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/chronosis/express-rate-limiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MediaXPost/express-rate-limiter&amp;utm_campaign=Badge_Grade)
-[![Codacy Coverage  Badge](https://api.codacy.com/project/badge/Coverage/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/chronosis/express-rate-limiter?utm_source=github.com&utm_medium=referral&utm_content=MediaXPost/express-rate-limiter&utm_campaign=Badge_Coverage)
-[![Dependencies](https://david-dm.org/MediaXPost/express-rate-limiter/status.svg)](https://david-dm.org/MediaXPost/express-rate-limiter)
+![Version](http://img.shields.io/npm/v/@outofsync/express-rate-limiter.svg)
+![Downloads](http://img.shields.io/npm/dt/@outofsync/express-rate-limiter.svg)
+[![Build Status](https://travis-ci.org/OutOfSyncStudios/express-rate-limiter.svg)](https://travis-ci.org/OutOfSyncStudios/express-rate-limiter)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OutOfSyncStudios/express-rate-limiter&amp;utm_campaign=Badge_Grade)
+[![Codacy Coverage  Badge](https://api.codacy.com/project/badge/Coverage/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&utm_medium=referral&utm_content=OutOfSyncStudios/express-rate-limiter&utm_campaign=Badge_Coverage)
+[![Dependencies](https://david-dm.org/OutOfSyncStudios/express-rate-limiter/status.svg)](https://david-dm.org/OutOfSyncStudios/express-rate-limiter)
 
-`express-rate-limit` is a cache-based, request reate limiter for use with [`expressJS`](https://www.npmjs.com/package/express). It is designed for use with [`request-utils`](https://www.npmjs.com/package/@mediaxpost/request-utils) but can be used without. It caches a store of IP address, Method, and Request tuples used to make any request and then temporarily blocks requests from those sources once a limit for those requests have been exceeded.
+`express-rate-limit` is a cache-based, request reate limiter for use with [`expressJS`](https://www.npmjs.com/package/express). It is designed for use with [`request-utils`](https://www.npmjs.com/package/@outofsync/request-utils) but can be used without. It caches a store of IP address, Method, and Request tuples used to make any request and then temporarily blocks requests from those sources once a limit for those requests have been exceeded.
 
 By default, the rate-limiter uses 250 attempts in a refreshing, 5-minute window. This means that if 250 bad requests are made, then 4 minutes and 59 seconds elapse, and then a 251st bad request is made, then the expiration of the rate limit will start at the moment of the 251st bad request.
 
@@ -23,14 +23,14 @@ By default, any rate limited ip / path, method tuple will be sent an empty 42900
 <a name="installation"></a>
 
 ```shell
-npm install @mediaxpost/express-rate-limiter
+npm install @outofsync/express-rate-limiter
 ```
 
 # [Usage](#usage)
 <a name="usage"></a>
 
 ```js
-const RateLimiter = require('@mediaxpost/express-rate-limiter');
+const RateLimiter = require('@outofsync/express-rate-limiter');
 rateLimiter = new RateLimiter('rateLimit');
 
 // Later in expressJS
@@ -84,7 +84,7 @@ The configuration parameter expects and object that contains the following (with
 
 <a name="cache-object"></a>
 ## [Cache Object](#cache-object)
-The Cache object can be a active and [promisified Redis](https://www.npmjs.com/package/redis#promises) connect, or an active [Memory Cache](https://www.npmjs.com/package/@mediaxpost/memory-cache) connection, or an active [Object Key Cache](https://www.npmjs.com/package/@mediaxpost/object-key-cache). If no value is set, then IP Blacklist will create an internal Object Key Cache and use it.
+The Cache object can be a active and [promisified Redis](https://www.npmjs.com/package/redis#promises) connect, or an active [Memory Cache](https://www.npmjs.com/package/@outofsync/memory-cache) connection, or an active [Object Key Cache](https://www.npmjs.com/package/@outofsync/object-key-cache). If no value is set, then IP Blacklist will create an internal Object Key Cache and use it.
 
 <a name="logging-object"></a>
 ## [Logging Object](#logging-object)
