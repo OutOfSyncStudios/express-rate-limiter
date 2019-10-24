@@ -46,10 +46,10 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@outofsync/memory-cache": "^1.2.0",
-    "@outofsync/object-key-cache": "^1.4.2",
-    "@outofsync/request-utils": "^1.1.0",
     "@outofsync/lodash-ex": "^1.3.2",
+    "@outofsync/memory-cache": "^1.2.0",
+    "@outofsync/object-key-cache": "^1.5.0",
+    "@outofsync/request-utils": "^2.0.0",
     "ajv": "^6.10.2",
     "bluebird": "^3.7.1",
     "eslint": "^6.5.1",
