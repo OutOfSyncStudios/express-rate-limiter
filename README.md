@@ -5,8 +5,8 @@
 ![Version](http://img.shields.io/npm/v/@outofsync/express-rate-limiter.svg)
 ![Downloads](http://img.shields.io/npm/dt/@outofsync/express-rate-limiter.svg)
 [![Build Status](https://travis-ci.org/OutOfSyncStudios/express-rate-limiter.svg)](https://travis-ci.org/OutOfSyncStudios/express-rate-limiter)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OutOfSyncStudios/express-rate-limiter&amp;utm_campaign=Badge_Grade)
-[![Codacy Coverage  Badge](https://api.codacy.com/project/badge/Coverage/f0f5c9174338455788204b439d52fbc4)](https://www.codacy.com/app/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&utm_medium=referral&utm_content=OutOfSyncStudios/express-rate-limiter&utm_campaign=Badge_Coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/10a1eb36327e4b21a42a51b3a765cd40)](https://www.codacy.com/manual/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OutOfSyncStudios/express-rate-limiter&amp;utm_campaign=Badge_Grade)
+[![Codacy Coverage Badge](https://api.codacy.com/project/badge/Coverage/10a1eb36327e4b21a42a51b3a765cd40)](https://www.codacy.com/app/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&utm_medium=referral&utm_content=OutOfSyncStudios/express-rate-limiter&utm_campaign=Badge_Coverage)
 [![Dependencies](https://david-dm.org/OutOfSyncStudios/express-rate-limiter/status.svg)](https://david-dm.org/OutOfSyncStudios/express-rate-limiter)
 
 `express-rate-limit` is a cache-based, request reate limiter for use with [`expressJS`](https://www.npmjs.com/package/express). It is designed for use with [`request-utils`](https://www.npmjs.com/package/@outofsync/request-utils) but can be used without. It caches a store of IP address, Method, and Request tuples used to make any request and then temporarily blocks requests from those sources once a limit for those requests have been exceeded.
