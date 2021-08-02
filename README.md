@@ -4,18 +4,18 @@
 
 ![Version](http://img.shields.io/npm/v/@outofsync/express-rate-limiter.svg)
 ![Downloads](http://img.shields.io/npm/dt/@outofsync/express-rate-limiter.svg)
-[![Build Status](https://travis-ci.org/OutOfSyncStudios/express-rate-limiter.svg)](https://travis-ci.org/OutOfSyncStudios/express-rate-limiter)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/10a1eb36327e4b21a42a51b3a765cd40)](https://www.codacy.com/manual/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OutOfSyncStudios/express-rate-limiter&amp;utm_campaign=Badge_Grade)
-[![Codacy Coverage Badge](https://api.codacy.com/project/badge/Coverage/10a1eb36327e4b21a42a51b3a765cd40)](https://www.codacy.com/app/OutOfSyncStudios/express-rate-limiter?utm_source=github.com&utm_medium=referral&utm_content=OutOfSyncStudios/express-rate-limiter&utm_campaign=Badge_Coverage)
+[![Build and Test Master](https://github.com/OutOfSyncStudios/express-rate-limiter/actions/workflows/build-master.yml/badge.svg)](https://github.com/OutOfSyncStudios/express-rate-limiter/actions/workflows/build-master.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4320352ea22c4137a23529e811299c2a)](https://www.codacy.com/gh/OutOfSyncStudios/express-rate-limiter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OutOfSyncStudios/express-rate-limiter&amp;utm_campaign=Badge_Grade)
+[![Codacy Coverage Badge](https://app.codacy.com/project/badge/Coverage/4320352ea22c4137a23529e811299c2a)](https://www.codacy.com/gh/OutOfSyncStudios/express-rate-limiter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=OutOfSyncStudios/express-rate-limiter&amp;utm_campaign=Badge_Coverage)
 [![Dependencies](https://david-dm.org/OutOfSyncStudios/express-rate-limiter/status.svg)](https://david-dm.org/OutOfSyncStudios/express-rate-limiter)
 
-`express-rate-limit` is a cache-based, request reate limiter for use with [`expressJS`](https://www.npmjs.com/package/express). It is designed for use with [`request-utils`](https://www.npmjs.com/package/@outofsync/request-utils) but can be used without. It caches a store of IP address, Method, and Request tuples used to make any request and then temporarily blocks requests from those sources once a limit for those requests have been exceeded.
+`express-rate-limit` is a cache-based, request rate limiter for use with [`expressJS`](https://www.npmjs.com/package/express). It is designed for use with [`request-utils`](https://www.npmjs.com/package/@outofsync/request-utils) but can be used without. It caches a store of IP address, Method, and Request tuples used to make any request and then temporarily blocks requests from those sources once a limit for those requests have been exceeded.
 
 By default, the rate-limiter uses 250 attempts in a refreshing, 5-minute window. This means that if 250 bad requests are made, then 4 minutes and 59 seconds elapse, and then a 251st bad request is made, then the expiration of the rate limit will start at the moment of the 251st bad request.
 
 If there are any unexpected errors during the cache retrieval process, then the process fails silently and the request is handled as normal.
 
-All request will have the HTTP Response Headers `X-RateLimit-Limit`, `X-RateLimit-Reset`, and `X-RateLimit-Remaining` set to total count of requests that can be made, the number of second before the window resets, and the number of request remaining that can be made before rate limiting occurs. respectively. If the `skipHeaders` flag is set true, than these headers are not sent.
+All request will have the HTTP Response Headers `X-RateLimit-Limit`, `X-RateLimit-Reset`, and `X-RateLimit-Remaining` set to total count of requests that can be made, the number of second before the window resets, and the number of request remaining that can be made before rate limiting occurs. respectively. If the `skipHeaders` flag is set true, than these headers are not sent along with the response object.
 
 By default, any rate limited ip / path, method tuple will be sent an empty 429000 error through `request-utils`; however this behavior can be overridden by setting a function for `onRateLimited`.
 
@@ -38,8 +38,8 @@ app.use(rateLimiter.limit);
 
 ```
 
-<a name="api"></a>
 # [API Reference](#api)
+<a name="api"></a>
 
 ## constructor(cacheNamespace [, config] [, cache] [, log])
 Create a new Rate Limiter client with the passed `cacheNamespace`, [`config`](#config-object), [`cache`](#cache-object), and [`log`](#logging-object).  A `cacheNamespace` is required to scope the Rate Limiter from other values which may be in use within the cache.
@@ -51,11 +51,11 @@ An express handler to check the current request against the rate limiter and whi
   app.use(rateLimiter.limit);
 ```
 
-<a name="appendix"></a>
 # [Appendix](#appendix)
+<a name="appendix"></a>
 
-<a name="config-object"></a>
 ## [Configuration Object](#config-object)
+<a name="config-object"></a>
 
 The configuration parameter expects and object that contains the following (with defaults provided below):
 ```js
@@ -82,10 +82,16 @@ The configuration parameter expects and object that contains the following (with
 |**`skipHeaders`**|Boolean|Indicates that the
 |**`noip`**|Boolean|Indicates that the IP Address from the HTTP Request should not be automatically added to the lookup scope. Without additional `lookup` criteria, this will act as a global ratelimit for every request, ensure that the value is sufficiently high if used in this way.|
 
-<a name="cache-object"></a>
 ## [Cache Object](#cache-object)
+<a name="cache-object"></a>
 The Cache object can be a active and [promisified Redis](https://www.npmjs.com/package/redis#promises) connect, or an active [Memory Cache](https://www.npmjs.com/package/@outofsync/memory-cache) connection, or an active [Object Key Cache](https://www.npmjs.com/package/@outofsync/object-key-cache). If no value is set, then IP Blacklist will create an internal Object Key Cache and use it.
 
-<a name="logging-object"></a>
 ## [Logging Object](#logging-object)
+<a name="logging-object"></a>
 The Logging object is an instance of any logging library, such as [Winston](https://www.npmjs.com/package/winston) or [Bunyan](https://www.npmjs.com/package/bunyan), which support the `.error(...)`, `.info(...)`, `.debug(...)`, and `.log(...)` methods. If this is not provided, then any debug or error messages are sent to `/dev/null` through the use of [`LogStub`](https://www.npmjs.com/package/logstub).
+
+## [License](#license)
+<a name="license"></a>
+
+Copyright (c) 2018-2019 Jay Reardon
+Copyright (c) 2019-2021 Out of Sync Studios LLC -- Licensed under the MIT license.

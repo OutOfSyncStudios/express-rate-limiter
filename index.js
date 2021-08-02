@@ -1,7 +1,12 @@
 // index.js
 
 // Dependencies
-const __ = require('@outofsync/lodash-ex');
+const __ = {
+  assign: require('lodash.assign'),
+  isNil: require('lodash.isnil'),
+  join: require('lodash.join'),
+  merge: require('lodash.merge'),
+};
 const ObjectKeyCache = require('@outofsync/object-key-cache');
 const ReqUtils = require('@outofsync/request-utils');
 const LogStub = require('logstub');
@@ -22,21 +27,21 @@ class RateLimiter {
       noip: false
     };
 
-    if (__.isUnset(namespace)) {
+    if (__.isNil(namespace)) {
       throw new Error('The RateLimiter cache namespace can not be omitted.');
     }
     this.namespace = namespace;
 
     this.cache = cache;
     // Default the cache to a memory cache if unset
-    if (__.isUnset(this.cache)) {
+    if (__.isNil(this.cache)) {
       this.cache = new ObjectKeyCache();
       this.cache.connect();
     }
 
     this.log = log || new LogStub();
 
-    this.config = __.merge(Object.assign(defaults), config);
+    this.config = __.merge(__.assign(defaults), config);
   }
 
   calcLookups(req, res) {
@@ -47,7 +52,7 @@ class RateLimiter {
     }
 
     // Make sure that the lookups are an array if unset
-    if (__.hasValue(this.config.lookup)) {
+    if (!__.isNil(this.config.lookup)) {
       // Convert to Array if not already
       looks = Array.isArray(this.config.lookup) ? this.config.lookup.splice(0) : [this.config.lookup];
     }
@@ -76,7 +81,7 @@ class RateLimiter {
   }
 
   limit(req, res, next) {
-    if (__.isUnset(req.reqUtils)) {
+    if (__.isNil(req.reqUtils)) {
       req.reqUtils = new ReqUtils(req);
     }
     const reqUtils = req.reqUtils;
@@ -106,7 +111,8 @@ class RateLimiter {
     };
 
     // Set onRateLimited function
-    this.config.onRateLimited = typeof this.config.onRateLimited === 'function' ? this.config.onRateLimited : (_req, _res, _next) => {
+    const onRateLimitedType = typeof this.config.onRateLimited;
+    this.config.onRateLimited = onRateLimitedType === 'function' ? this.config.onRateLimited : (_req, _res, _next) => {
       reqUtils.setError(429000);
       _next('Rate limit exceeded.');
     };
