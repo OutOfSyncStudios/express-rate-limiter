@@ -54,7 +54,7 @@
     "@outofsync/memory-cache": "^1.4.1",
     "@outofsync/object-key-cache": "^1.6.3",
     "@outofsync/request-utils": "^3.0.1",
-    "@types/node": "^14.17.7",
+    "@types/node": "^18.0.1",
     "lodash.assign": "^4.2.0",
     "lodash.isnil": "^4.0.0",
     "lodash.join": "^4.0.1",
